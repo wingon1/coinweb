@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="coinweb.dao.bbsDAO">
+	<!-- /**날짜가져오기*/ -->
+	<select id="getDate" resultType="coinweb.vo.bbsVO">
+		SELECT now()
+	</select>
+
+	<!-- /**Next*/ -->
+	<select id="getNext" resultType="coinweb.vo.bbsVO">
+		SELECT bbsID FROM bbs ORDER BY bbsID DESC
+	</select>
+
+	<!-- /*글쓰기*/ -->
+	<insert id="write" parameterType="coinweb.vo.bbsVO">
+		INSERT INTO bbs(userid, email, bbstitle, bbscontent, bbsdate) VALUES(#{userID}, #{email}, #{bbsTitle}, #{bbsContent} ,now())
+	</insert>
+
+	<select id="execTotalCount" resultType="Integer">
+ 		SELECT COUNT(*) FROM bbs
+ 	</select>
+
+	<!-- 리스트뿌리기 -->
+	<select id="getResultList" resultType="coinweb.vo.bbsVO">
+		select bbsID, bbsTitle, userID, email, bbsContent, date_format(bbsdate, '%Y-%m-%d') AS fdate
+		from bbs 
+		
+		<choose>
+		 <when test="param3 eq 1001">
+		 	ORDER BY bbsdate DESC limit #{param1} ,#{param2}
+		 </when>
+		 <otherwise>
+		 	where userID = #{param3} ORDER BY bbsdate DESC limit #{param1} ,#{param2}
+		 </otherwise>
+		</choose>
+	</select>
+
+	<!-- 내용보기 -->
+	<select id="getResultVO" resultType="coinweb.vo.bbsVO">
+		select bbsid, bbstitle, userid, email, bbscontent, date_format(bbsdate, '%Y-%m-%d %H:%i:%S') as fdate FROM bbs 
+		WHERE bbsid=#{bbsID}
+	</select>
+
+	<!-- 업데이트 -->
+	<update id="getUpdateResult">
+		UPDATE bbs SET bbstitle = #{bbsTitle}, bbscontent = #{bbsContent} WHERE bbsid = #{bbsID}
+	</update>
+
+	<!-- 삭제 -->
+	<delete id="getDeleteResult">
+		DELETE FROM bbs WHERE bbsid=#{bbsID}
+	</delete>
+
+
+</mapper>

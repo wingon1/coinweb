@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="coinweb.dao.BoardDAO">  
+	<select id="getBoardList" resultType="coinweb.vo.BoardVO">
+		SELECT no, id, title, name, date_format(bdate, '%Y-%m-%d') AS fbdate, hits, likeit 
+		FROM coinweb_board ORDER BY BDATE DESC limit #{param1} ,#{param2}
+	</select>
+	<select id="getBoardListContent" resultType="coinweb.vo.BoardVO">
+		SELECT  no, id, title, name, date_format(bdate, '%Y-%m-%d') AS fbdate, hits, likeit 
+		FROM coinweb_board WHERE UPPER(content) LIKE CONCAT('%' , UPPER(#{param1}) , '%') ORDER BY bdate DESC limit #{param2} ,#{param3} 
+	</select>
+	<select id="getBoardListTitle" resultType="coinweb.vo.BoardVO">
+		SELECT no, id, title, name, date_format(bdate, '%Y-%m-%d') AS fbdate, hits, likeit 
+		FROM coinweb_board WHERE UPPER(title) LIKE CONCAT('%' , UPPER(#{param1}) , '%') ORDER BY bdate DESC limit #{param2} ,#{param3}
+	</select>
+	<select id="execTotalCount" resultType="Integer">
+ 		SELECT COUNT(*) FROM coinweb_board
+ 	</select>
+ 	<select id="execTotalCountContent" resultType="Integer">
+ 		SELECT COUNT(*) FROM coinweb_board   WHERE UPPER(content) LIKE CONCAT('%' , UPPER(#{param1}) , '%')
+ 	</select> 
+ 	<select id="execTotalCountTitle" resultType="Integer">
+ 		SELECT COUNT(*) FROM coinweb_board   WHERE UPPER(title) LIKE CONCAT('%' , UPPER(#{param1}) , '%')
+ 	</select> 
+ 	 		
+	<select id="getBoardContent" resultType="coinweb.vo.BoardVO">
+		SELECT no, id, title, name, date_format(bdate, '%Y-%m-%d %H:%i:%S') AS fbdate, hits, likeit, content FROM coinweb_board WHERE no = #{no}
+	</select>
+	
+ 	<insert id="insertBoardContent" parameterType="coinweb.vo.BoardVO">
+ 		INSERT INTO coinweb_board(id,title,name,content,bdate,hits,likeit) 
+ 		VALUES(#{id}, #{title}, #{name}, #{content}, now(), 0, 0)
+ 	</insert>
+ 	<delete id="deleteBoardContent">
+ 		DELETE FROM coinweb_board WHERE no=#{no}
+ 	</delete>	
+ 	
+ 	<update id="updateBoardContent">
+	 	UPDATE coinweb_board SET title = #{title}, content = #{content} WHERE no = #{no}				
+ 	</update>
+ 	
+ 	<select id="searchBoardList" resultType="coinweb.vo.BoardVO">
+ 		SELECT title
+ 			 , name
+ 			 , date_format(bdate, '%YY-%m-%d') AS fbdate
+			 , hits
+			 , likeit FROM coinweb_board 
+			   WHERE title LIKE CONCAT('%' , #{search} , '%')
+ 	</select>
+ 	<update id="getUpdateHits">
+ 		UPDATE coinweb_board SET hits = hits+1 WHERE no =#{no}
+ 	</update>
+ 	
+ 	<update id="likeitUp">
+		UPDATE coinweb_board SET LIKEIT = LIKEIT+1 WHERE NO =#{no}
+ 	</update>
+ 	<update id="likeitDown">
+		UPDATE coinweb_board SET LIKEIT = LIKEIT-1 WHERE NO =#{no}
+ 	</update>
+ 	<select id="getLikeit" resultType="coinweb.vo.BoardVO">
+		SELECT LIKEIT FROM coinweb_board WHERE NO=#{no}
+ 	</select>
+ 	
+ 	<select id="getReplyList" resultType="coinweb.vo.BoardReplyVO">
+		SELECT rid, id, rname, content, rdate, bid, likeit, dislikeit FROM coinweb_board_reply
+			   WHERE BID=#{no} ORDER BY RDATE DESC		 	 
+	</select>
+	
+	<select id="getReplyCount" resultType="Integer">
+		SELECT COUNT(*) FROM coinweb_board_reply WHERE bid=#{no}	 	 
+	</select>
+	
+	
+	<insert id="getReplyInsertResult">
+		INSERT INTO coinweb_board_reply(id,bid,rname,content,rdate,likeit,dislikeit)
+		 VALUES(#{param1}, #{param2}, #{param3}, #{param4}, now(), 0, 0)			 				 					
+
+	</insert>
+	
+	<update id="replyLikeitUp">
+ 	  	UPDATE coinweb_board_reply SET likeit = likeit+1 WHERE bid =#{param1} AND rid =#{param2}
+ 	</update>
+
+ 	<update id="replyDislikeitUp">
+		UPDATE coinweb_board_reply SET dislikeit = dislikeit+1 WHERE bid =#{param1} AND rid =#{param2}
+ 	</update>
+ 	
+ 	<update id="replyLikeitDown">
+ 	  	UPDATE coinweb_board_reply SET likeit = likeit-1 WHERE bid =#{param1} AND rid =#{param2}
+ 	</update>
+
+ 	<update id="replyDislikeitDown">
+		UPDATE coinweb_board_reply SET dislikeit = dislikeit-1 WHERE bid =#{param1} AND rid =#{param2}
+ 	</update>
+ 	
+	<select id="getReplyLikeit" resultType="coinweb.vo.BoardReplyVO">
+ 		SELECT likeit,dislikeit FROM coinweb_board_reply WHERE bid=#{param1} AND rid =#{param2}
+ 	</select>
+ 
+ 	<insert id="insertBoardLikeit">
+		INSERT INTO board_likeit(bid,id,type,date) VALUES(#{param1}, #{param2}, #{param3}, now())			 				 					
+	</insert>
+	
+	<insert id="insertReplyLikeit">
+		INSERT INTO reply_likeit(bid,rid,id,type,date) VALUES(#{param1}, #{param2}, #{param3}, #{param4}, now())			 				 					
+	</insert>
+	
+	<insert id="deleteBoardLikeit">
+		delete from board_likeit where bid=#{param1} and id=#{param2}			 				 					
+	</insert>
+	
+	<insert id="deleteReplyLikeit">
+		delete from reply_likeit where bid=#{param1} and rid=#{param2} and id=#{param3}			 				 					
+	</insert>
+	
+	<select id="getBoardLikeitCheck" parameterType="HashMap" resultType="String">
+		select type from board_likeit where bid=#{param1} and id=#{param2}
+	</select>
+	
+	<select id="getReplyLikeitCheck" parameterType="HashMap" resultType="String">
+		select type from reply_likeit where bid=#{param1} and rid=#{param2} and id=#{param3}
+	</select>
+  
+   
+</mapper>

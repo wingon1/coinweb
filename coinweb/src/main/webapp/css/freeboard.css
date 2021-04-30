@@ -1,0 +1,217 @@
+@CHARSET "EUC-KR";
+
+
+/*freeboard  -list*/
+
+.freeboard{
+	
+}
+
+.freeboard_table{
+
+	padding: 50px 50px 10px 50px;
+	margin-bottom: 50px;
+	
+}
+
+
+.freeboard_header{
+	width: 100%;
+	height: 250px;
+	text-align: center;
+	color: white;
+	margin-top:-10px;
+	background: linear-gradient(to right , rgba(51, 153, 255, 0.9),#00CED1);
+}
+
+.freeboard_header_h1{
+	padding-top: 110px;
+}
+
+.container{
+	margin-top: 15px;
+}
+
+table.freeboard_list_table th{
+	text-align: center;
+}
+
+table.freeboard_list_table td{
+	color: #737373;
+	font-size: 12px;
+	text-align: center;
+}
+.freeboard_list_table .rnotd{
+	width: 80px;
+}
+.freeboard_list_table .titletd{
+	width: 600px;
+	color: black;
+	font-size: 15px;
+	text-align: left;
+	font-weight: 500;
+}
+
+.freeboard_list_table .likeittd{
+	width: 60px;
+
+}
+
+.freeboard_list_table .hitstd{
+	width: 60px;
+
+}
+
+
+
+
+/*freeboard-content*/
+
+
+
+.freeboard_content_title {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 5px 30px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background-color: #f5f5f5;
+}
+
+
+.freeboard_content_title .freeboard_content_title_text {
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 8px;
+}
+
+.freeboard_content_title .freeboard_content_title_date {
+    float: right;
+    font-size: 12px;
+    color: #333;
+    margin-top: 12px;
+}
+
+
+.freeboard_content_author {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 5px 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.freeboard_content_author_name {
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    color: #0080ff;
+}
+
+.freeboard_content_author_info {
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+.freeboard_content_author_info p {
+    float: left;
+    font-size: 11px;
+    margin-left: 12px;
+    color: #888;
+}
+.freeboard_content {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 60px 30px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.likeitBtn{
+	margin-bottom: 20px;
+	background-color: #fe0159;
+	color: #fff;
+}
+
+.dislikeitBtn{
+	margin-bottom: 20px;
+	background-color: #0080ff;
+	color: #fff;
+}
+
+
+
+
+
+
+/*´ñ±Û°Ô½ÃÆÇ*/
+.reply-write{
+border: 1px solid rgb(216, 216, 216); 
+padding: 5px;
+margin-top: 5px;
+}
+
+
+.reply-write-title{
+position: absolute;
+z-index: -10;
+color: #9494b8;
+}
+
+
+.reply-write-content{
+height: 100px;
+z-index: 0;
+}
+
+
+.view1{
+	color:red;
+}
+
+
+.replyDiv{
+border-top: 1px solid rgb(216, 216, 216);
+margin-top: 20px;
+padding-top: 20px;
+}
+
+.replyTool{
+position: relative;
+float:right;
+display: inline; 
+margin-top: -35px; 
+}
+
+.replyBtn{
+background: none;
+border: 1px solid rgb(216, 216, 216);  
+width: 60px;
+height: 25px;
+}
+.replyRdate{
+color: gray; 
+font-size: 13px; 
+}
+.fa-thumbs-o-up{
+position: absolute;
+right: 100px;
+bottom: 5px;
+}
+.fa-thumbs-o-down{
+position: absolute;
+right: 40px;
+bottom: 5px;
+}
+
+.communitySearchBtn{
+	margin-top: 5px;
+}
