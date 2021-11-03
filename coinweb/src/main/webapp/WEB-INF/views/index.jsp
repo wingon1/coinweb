@@ -44,8 +44,9 @@ function proc() {
 var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'Windows CE;', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson', 'Mobile', 'Symbian', 'Opera Mobi', 'Opera Mini', 'IEmobile');
 for (var word in mobileKeyWords){
 	if (navigator.userAgent.match(mobileKeyWords[word]) != null){
-		window.location.href = "${pageContext.request.contextPath}/m/index.do";
-		break;
+	    alert("해당 사이트는 모바일을 지원하지 않습니다.")
+		<%--window.location.href = "${pageContext.request.contextPath}/m/index.do";--%>
+		 break;
 	}
 }
 </script>
@@ -70,8 +71,8 @@ for (var word in mobileKeyWords){
    <!-- 메인 이미지.. 끝-->
 <!-- 박스 -->
 <div class="coinBox">
-<h3>현재 총 12개의 가상화폐를 지원합니다.</h3><br>
-<a href="#"><div class="box shadow1">
+<h3>현재 총 7개의 가상화폐를 지원합니다.</h3><br>
+<a href="${pageContext.request.contextPath}/business.do"><div class="box shadow1">
 <img src="${pageContext.request.contextPath}/images/btc.png"><br>
 <span class="coin">Bitcoin</span><br><br>
  <div class="content33">
@@ -79,7 +80,7 @@ for (var word in mobileKeyWords){
     <h5 id="BTC"></h5>
   </div>
 </div></a>
-<a href="#">
+<a href="${pageContext.request.contextPath}/business.do">
 <div class="box shadow1">
 <img src="${pageContext.request.contextPath}/images/bch.png"><br>
 <span class="coin">Bitcoin Cash</span><br><br>
@@ -88,7 +89,7 @@ for (var word in mobileKeyWords){
     <h5 id="BCH"></h5>
   </div>
 </div></a>
-<a href="#">
+<a href="${pageContext.request.contextPath}/business.do">
 <div class="box shadow1">
 <img src="${pageContext.request.contextPath}/images/eth.png"><br>
 <span class="coin">Ethereum</span><br><br>
@@ -97,7 +98,7 @@ for (var word in mobileKeyWords){
     <h5 id="ETH"></h5>
   </div>
 </div></a>
-<a href="#">
+<a href="${pageContext.request.contextPath}/business.do">
 <div class="box shadow1">
 <img src="${pageContext.request.contextPath}/images/etc.png"><br>
 <span class="coin">Ethereum Classic</span><br><br>
@@ -106,7 +107,7 @@ for (var word in mobileKeyWords){
     <h5 id="ETC"></h5>
   </div>
 </div></a>
-<a href="#">
+<a href="${pageContext.request.contextPath}/business.do">
 <div class="box shadow1">
 <img src="${pageContext.request.contextPath}/images/litecoin.png"><br>
 <span class="coin">Litecoin</span><br><br>
@@ -115,7 +116,7 @@ for (var word in mobileKeyWords){
     <h5 id="LTC"></h5>
   </div>
 </div></a>
-<a href="#">
+<a href="${pageContext.request.contextPath}/business.do">
 <div class="box shadow1">
 <img src="${pageContext.request.contextPath}/images/ripple.png"><br>
 <span class="coin">Ripple</span><br><br>
@@ -124,7 +125,7 @@ for (var word in mobileKeyWords){
     <h5 id="XRP"></h5>
   </div>
 </div></a>
-<a href="#">
+<a href="${pageContext.request.contextPath}/business.do">
 <div class="box shadow1">
 <img src="${pageContext.request.contextPath}/images/eos.png"><br>
 <span class="coin">Eos</span><br><br>
@@ -133,52 +134,6 @@ for (var word in mobileKeyWords){
     <h5 id="EOS"></h5>
   </div>
 </div></a>
-<a href="#">
-<div class="box shadow1">
-<img src="${pageContext.request.contextPath}/images/dash.png"><br>
-<span class="coin">Dash</span><br><br>
- <div class="content33">
-    <p>현재시세 <span id="p_DASH"></span></p>
-    <h5 id="DASH"></h5>
-  </div>
-</div></a>
-<a href="#">
-<div class="box shadow1">
-<img src="${pageContext.request.contextPath}/images/xmr.png"><br>
-<span class="coin">Monero</span><br><br>
- <div class="content33">
-    <p>현재시세 <span id="p_XMR"></span></p>
-    <h5 id="XMR"></h5>
-  </div>
-</div></a>
-<a href="#">
-<div class="box shadow1">
-<img src="${pageContext.request.contextPath}/images/qtum.png"><br>
-<span class="coin">Quantum</span><br><br>
- <div class="content33">
-    <p>현재시세 <span id="p_QTUM"></span></p>
-    <h5 id="QTUM"></h5>
-  </div>
-</div></a>
-<a href="#">
-<div class="box shadow1">
-<img src="${pageContext.request.contextPath}/images/btg.png"><br>
-<span class="coin">Bitcoin Gold</span><br><br>
- <div class="content33">
-    <p>현재시세 <span id="p_BTG"></span></p>
-    <h5 id="BTG"></h5>
-  </div>
-</div></a>
-<a href="#">
-<div class="box shadow1">
-<img src="${pageContext.request.contextPath}/images/zec.png"><br>
-<span class="coin">Zcash</span><br><br>
- <div class="content33">
-    <p>현재시세 <span id="p_ZEC"></span></p>
-    <h5 id="ZEC"></h5>
-  </div>
-</div></a>
-
 <a href="${pageContext.request.contextPath}/business.do"><button class="boxbtn shadow2">거래소 보기</button></a>
 </div>
 

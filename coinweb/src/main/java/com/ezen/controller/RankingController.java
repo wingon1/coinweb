@@ -1,4 +1,4 @@
-﻿package com.ezen.controller;
+package com.ezen.controller;
 
 import java.util.ArrayList;
 
@@ -24,8 +24,8 @@ public class RankingController {
 		ModelAndView mv = new ModelAndView();
 		MemberDAO dao =sqlSession.getMapper(coinweb.dao.MemberDAO.class);
 		ArrayList<RankingVO> list = dao.getRankingList();
-		
-		
+
+
 		mv.addObject("list",list);
 	
 		

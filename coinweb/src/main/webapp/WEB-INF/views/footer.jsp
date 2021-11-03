@@ -17,7 +17,7 @@
   <i class="fa fa-pinterest-p w3-hover-opacity"></i>
   <i class="fa fa-twitter w3-hover-opacity"></i>
   <i class="fa fa-linkedin w3-hover-opacity"></i>
-  <p class="w3-medium">Powered by <a href="#" target="_blank">4Á¶</a></p>
+  <p class="w3-medium">Powered by <a href="#" target="_blank">JITTUNG</a></p>
 </footer>
 
 </body>

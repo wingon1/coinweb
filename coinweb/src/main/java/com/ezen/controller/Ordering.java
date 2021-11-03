@@ -1,4 +1,4 @@
-﻿package com.ezen.controller;
+package com.ezen.controller;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -58,13 +58,14 @@ public class Ordering extends Thread {
 			for (String coin : list) {
 				URL url2 = null;
 				try {
-					url2 = new URL("http://localhost:8080/coinweb/order_all_list.do?coin=" + coin);
+					url2 = new URL(request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/order_all_list.do?coin=" + coin);
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
 				}
 				InputStreamReader isr2 = null;
 				try {
 					isr2 = new InputStreamReader(url2.openConnection().getInputStream(), "UTF-8");
+					//System.out.println(isr2);
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 				} catch (IOException e) {

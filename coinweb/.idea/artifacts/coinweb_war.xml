@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="coinweb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>coinweb</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="coinweb-1.0.0-BUILD-SNAPSHOT.war">
+      <element id="artifact" artifact-name="coinweb:war exploded" />
+    </root>
+  </artifact>
+</component>

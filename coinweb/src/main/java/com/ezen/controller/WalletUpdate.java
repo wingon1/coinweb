@@ -1,4 +1,4 @@
-﻿package com.ezen.controller;
+package com.ezen.controller;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,10 +31,10 @@ public class WalletUpdate {
 	
 			URL url = null, url2 = null, url3 = null;
 			InputStreamReader isr = null, isr2 = null, isr3 = null;
-			
+
 			try {
 				url = new URL("https://api.bithumb.com/public/ticker/ALL");
-				url2 = new URL("http://localhost:8080/coinweb/member_list.do");
+				url2 = new URL(request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+""+request.getContextPath()+"/member_list.do");
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}
@@ -59,7 +59,7 @@ public class WalletUpdate {
 				String id = member.get("id").toString();
 				
 				try {
-					url3 = new URL("http://localhost:8080/coinweb/wallet_list.do?id="+id);
+					url3 = new URL(request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+""+request.getContextPath()+"/wallet_list.do?id="+id);
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
 				}

@@ -521,10 +521,7 @@ $(function(){
   <button class="business_tablinks coin_btn" data-coin="ETH"><img src="images/eth.png">이더리움</button>
   <button class="business_tablinks coin_btn" data-coin="ETC"><img src="images/etc.png">이더 클래식</button>
   <button class="business_tablinks coin_btn " data-coin="XRP"><img src="images/ripple.png">리플</button>
-  <button class="business_tablinks coin_btn" data-coin="DASH"><img src="images/dash.png">대시</button>
   <button class="business_tablinks coin_btn" data-coin="LTC"><img src="images/litecoin.png">라이트코인</button>
-  <button class="business_tablinks coin_btn" data-coin="XMR"><img src="images/xmr.png">모네로</button>
-  <button class="business_tablinks coin_btn" data-coin="ZEC"><img src="images/zec.png">제트캐시</button>
   <button class="business_tablinks coin_btn" data-coin="QTUM"><img src="images/qtum.png">퀀텀</button>
 </div>
  

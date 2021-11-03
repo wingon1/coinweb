@@ -1,16 +1,20 @@
 package coinweb.vo;
 
 public class RankingVO {
-	int  id,profit, rno;
+	int  id, rno;
 	String name,money;
-	
-	
-	
-	public int getProfit() {
+	float rankProfit;
+	long profit;
+
+
+
+	public long getProfit() {
 		return profit;
 	}
-	public void setProfit(int profit) {
-		this.profit = (int) ((profit/30000000.0)*100-100);
+	public void setProfit(long profit) {
+		float setProfit = 0;
+		if(profit != 30000000) setProfit = (float) ((profit/30000000.0)*100-100);
+		this.rankProfit = setProfit;
 	}
 	public int getRno() {
 		return rno;
@@ -35,6 +39,12 @@ public class RankingVO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public float getRankProfit() {
+		return rankProfit;
+	}
+	public void setRankProfit(float rankProfit) {
+		this.rankProfit = rankProfit;
 	}
 
 }

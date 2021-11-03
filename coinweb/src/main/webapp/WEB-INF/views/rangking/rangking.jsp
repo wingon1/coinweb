@@ -33,7 +33,7 @@
 			<c:forEach items="${list}" var="vo1" begin="0" end="0">
 				<p>${vo1.name}</p>
 				<p>총자산: <font color=red>${vo1.money}</font>원</p>
-				<p>수익률 : <font color=red>${vo1.profit}</font>%</p>
+				<p>수익률 : <font color=red>${String.format("%.2f",vo1.rankProfit)}</font>%</p>
 			</c:forEach>
 		</div>
 		
@@ -43,7 +43,7 @@
 			<c:forEach items="${list}" var="vo2" begin="1" end="1">
 				<p>${vo2.name}</p>
 				<p>총자산: <font color=red>${vo2.money}</font>원</p>
-				<p>수익률 : <font color=red>${vo2.profit}</font>%</p>
+				<p>수익률 : <font color=red>${String.format("%.2f",vo2.rankProfit)}</font>%</p>
 			</c:forEach>
 		</div>
 		
@@ -53,7 +53,7 @@
 			<c:forEach items="${list}" var="vo3" begin="2" end="2">
 				<p>${vo3.name}</p>
 				<p>총자산: <font color=red>${vo3.money}</font>원</p>
-				<p>수익률 : <font color=red>${vo3.profit}</font>%</p>
+				<p>수익률 : <font color=red>${String.format("%.2f",vo3.rankProfit)}</font>%</p>
 			</c:forEach>
 		</div>
 		
@@ -72,7 +72,7 @@
 			    <td>${vo.rno}</td>
 			    <td>${vo.name}</td>
 			    <td><font color=red>${vo.money}</font>원</td>
-			    <td><font color=red>${vo.profit}</font>%</td>
+			    <td><font color=red>${vo.rankProfit}</font>%</td>
 			  </tr>
 			  </c:forEach>
 			
