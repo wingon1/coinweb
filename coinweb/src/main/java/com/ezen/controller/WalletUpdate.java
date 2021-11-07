@@ -74,7 +74,7 @@ public class WalletUpdate {
 				JSONArray wallet = (JSONArray) JSONValue.parse(isr3);
 				JSONObject krw = (JSONObject) wallet.get(0);
 				float tot = parseFloat(krw.get("available"));
-				String list[] = {"KRW", "BTC","BCH","ETC","ETH","XRP","EOS","LTC" };
+				String list[] = {"KRW", "BTC","BCH","ETH","ETC","XRP","EOS","LTC" };
 				
 				//for(int j=1; j<wallet.size()-1; j++) {
 				for(int j=1; j<list.length-1; j++) {

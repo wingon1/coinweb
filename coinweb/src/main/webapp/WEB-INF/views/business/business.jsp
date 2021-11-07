@@ -590,7 +590,7 @@ $(function(){
                                             </div>
                                         </div>
                                         <div class="form-group form_sell_amount">
-                                            <label for="sell_input1" class="col-sm-2 col-xs-12 control-label sell_amount_label">주문수량</label>
+                                            <label class="col-sm-2 col-xs-12 control-label sell_amount_label">주문수량</label>
                                             <div class="col-sm-7 col-xs-12">
                                                 <input type="text" class="form-control order_amount" id="buy_unit" placeholder="매수수량" onkeyup="fCalcData()" onblur="fCalcData()">
                                             </div>
@@ -637,7 +637,7 @@ $(function(){
                                             </div>
                                         </div>
                                         <div class="form-group form_sell_amount">
-                                            <label for="sell_input1" class="col-sm-2 control-label sell_amount_label">주문수량</label>
+                                            <label class="col-sm-2 control-label sell_amount_label">주문수량</label>
                                             <div class="col-sm-7">
                                                 <input type="text" class="form-control order_amount" id="sell_unit" placeholder="매도수량" onkeyup="fCalcData()">
                                             </div>
@@ -672,7 +672,7 @@ $(function(){
 	 				<!-- 차트 (매도,매수 가격)-->
 	 				<div class="chart_table">
 	 					
-	 					<table class="table1" border="1" style="border-color: #fe3e3e3;">
+	 					<table class="table1" border="1">
 	 						
 	 						<tr>
 	 							<td style="color: blue;">매도주문</td>

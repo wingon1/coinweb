@@ -6,55 +6,50 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import java.math.*;
+import java.nio.charset.StandardCharsets;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import coinweb.dao.OrderDAO;
 import coinweb.dao.WalletDAO;
-import coinweb.vo.OrderVO;
+
+import static org.json.simple.JSONValue.parse;
+
 
 public class Ordering extends Thread {
-	@Autowired
-	SqlSessionTemplate sqlSession;
 
-	public Ordering() {
-	};
+	@Resource
+	SqlSessionTemplate sqlSession;
 
 	public Ordering(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
-	};
+	}
 
 	public void run(HttpServletRequest request) {
-			OrderDAO dao = sqlSession.getMapper(OrderDAO.class);
-			WalletDAO w_dao = sqlSession.getMapper(WalletDAO.class);
-	
-			URL url = null;
-			try {
-				url = new URL("https://api.bithumb.com/public/orderbook/ALL");
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-			InputStreamReader isr = null;
-			try {
-				isr = new InputStreamReader(url.openConnection().getInputStream(), "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			JSONObject object = (JSONObject) JSONValue.parse(isr);
-			if(object != null){
+		OrderDAO dao = sqlSession.getMapper(OrderDAO.class);
+		WalletDAO w_dao = sqlSession.getMapper(WalletDAO.class);
+
+		URL url;
+		InputStreamReader isr = null;
+
+		try {
+			url = new URL("https://api.bithumb.com/public/orderbook/ALL");
+			isr = new InputStreamReader(url.openConnection().getInputStream(), StandardCharsets.UTF_8);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		JSONObject object = (JSONObject) parse(isr);
+		if(object != null){
 			JSONObject data = (JSONObject) object.get("data");
 	
-			String list[] = { "KRW","BTC","BCH","ETC","ETH","XRP","EOS","LTC" };
+			String[] list = { "KRW","BTC","BCH","ETC","ETH","XRP","EOS","LTC" };
 			for (String coin : list) {
 				URL url2 = null;
 				try {
@@ -72,7 +67,7 @@ public class Ordering extends Thread {
 					e.printStackTrace();
 				}
 	
-				JSONArray orders = (JSONArray) JSONValue.parse(isr2);
+				JSONArray orders = (JSONArray) parse(isr2);
 	
 				JSONObject COIN = (JSONObject) data.get(coin);
 	

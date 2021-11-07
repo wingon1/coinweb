@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/coin.css">
-<title>Coinweb - °¡»óÈ­Æó ¸ğÀÇÅõÀÚ</title>
+<title>Coinweb - ê°€ìƒí™”í ëª¨ì˜íˆ¬ì</title>
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <script>
 var sid = ${sid};
@@ -36,9 +36,9 @@ function GetWalletList(){
 			data : 'id='+sid,
 			dataType : 'json',
 			success : function(data){
-					$("#krw").html(numberWithCommas(data[0].available)+"¿ø");
-					$("#total").html(numberWithCommas(data[0].tot)+"¿ø");
-					$("#tot").html(numberWithCommas(data[0].tot)+"¿ø");
+					$("#krw").html(numberWithCommas(data[0].available)+"ì›");
+					$("#total").html(numberWithCommas(data[0].tot)+"ì›");
+					$("#tot").html(numberWithCommas(data[0].tot)+"ì›");
 					if(data[0].tot == 30000000)
 						$("#profit").html("0.00%");	
 					else if(data[0].tot > 30000000)
@@ -69,9 +69,9 @@ function GetOrderList(){
 			$('#order_table > tbody').empty();
 			for(var i=0;i<data.length;i++){
 				var type = data[i].type;
-				if(type == 'B')	type = "<td style='color:red;'>¸Å¼ö</td>"; else type = "<td style='color:blue;'>¸Åµµ</td>";
+				if(type == 'B')	type = "<td style='color:red;'>ë§¤ìˆ˜</td>"; else type = "<td style='color:blue;'>ë§¤ë„</td>";
 				code = "<tr><td>"+data[i].coin+"</td><td>"+data[i].date+"</td>"+type+"<td>"+numberWithCommas(data[i].price)+"</td><td>"
-				+Floor(data[i].amount,4)+"/"+Floor(data[i].amount_c,4)+"</td><td>´ë±âÁß</td></tr>";
+				+Floor(data[i].amount,4)+"/"+Floor(data[i].amount_c,4)+"</td><td>ëŒ€ê¸°ì¤‘</td></tr>";
 				$('#order_table > tbody:last').append(code);
 			}
 		}
@@ -92,9 +92,9 @@ function GetHistoryList(){
 			if(data.length < 100) length = data.length; else length = 100;
 			for(var i=0;i<length;i++){
 				var type = data[i].type;
-				if(type == 'B')	type = "<td style='color:red;'>¸Å¼ö</td>"; else type = "<td style='color:blue;'>¸Åµµ</td>";
+				if(type == 'B')	type = "<td style='color:red;'>ë§¤ìˆ˜</td>"; else type = "<td style='color:blue;'>ë§¤ë„</td>";
 				code = "<tr><td>"+data[i].coin+"</td><td>"+data[i].date+"</td>"+type+"<td>"+numberWithCommas(data[i].price)+"</td><td>"
-					+Floor(data[i].amount,4)+"</td><td>¿Ï·á</td></tr>";
+					+Floor(data[i].amount,4)+"</td><td>ì™„ë£Œ</td></tr>";
 				$('#history_table > tbody:last').append(code);
 			}
 		}
@@ -110,16 +110,16 @@ function GetHistoryList(){
 <section class="wallet" id="wallet">
 
 <div class="wallet_tablink_btn_box">
-<button class="wallet_tablink" onclick="openPage('mywallet', this, '5px solid #0080ff', '#0080ff')" id="defaultOpen">³» Áö°©</button>
-<button class="wallet_tablink" onclick="openPage('mybusiness', this, '5px solid #0080ff', '#0080ff' )">°Å·¡³»¿ª</button>
-<button class="wallet_tablink" onclick="openPage('myreturn', this, '5px solid #0080ff', '#0080ff')">¼öÀÍ·ü</button>
+<button class="wallet_tablink" onclick="openPage('mywallet', this, '5px solid #0080ff', '#0080ff')" id="defaultOpen">ë‚´ ì§€ê°‘</button>
+<button class="wallet_tablink" onclick="openPage('mybusiness', this, '5px solid #0080ff', '#0080ff' )">ê±°ë˜ë‚´ì—­</button>
+<button class="wallet_tablink" onclick="openPage('myreturn', this, '5px solid #0080ff', '#0080ff')">ìˆ˜ìµë¥ </button>
 </div>
 <div id="mywallet" class="wallet_tabcontent">
 <div class="mywallet_box">
-  <h1>³» Áö°©</h1>
-  <h4>ÇöÀç ÃÑÇÕ º¸À¯ ÀÚ»ê</h4>
+  <h1>ë‚´ ì§€ê°‘</h1>
+  <h4>í˜„ì¬ ì´í•© ë³´ìœ  ìì‚°</h4>
 	  <div class="mywalletcoin btc">
-	  <span style="color:#787878; ">ÃÑ ÀÚ»ê </span><br>
+	  <span style="color:#787878; ">ì´ ìì‚° </span><br>
 	  <span style="font-size: 22px;" id="total"></span>
 	  </div>
 	  <div class="mywalletcoin krw">
@@ -127,15 +127,15 @@ function GetHistoryList(){
 	  <span  style="font-size: 22px;" id="krw"></span>
 	  </div>
 	  <div>
-	    <h4>È­Æóº° Áö°©</h4>
+	    <h4>í™”íë³„ ì§€ê°‘</h4>
 	    <div>
 	     <table class="coinWallet" id="wallet_table">
 	     	<thead>
 	     		<tr>
-	     			<th>ÄÚÀÎ</th>
-	     			<th>ÀÌ¸§</th>
-	     			<th>º¸À¯·®</th>
-	     			<th>°Å·¡ ´ë±âÁß</th>
+	     			<th>ì½”ì¸</th>
+	     			<th>ì´ë¦„</th>
+	     			<th>ë³´ìœ ëŸ‰</th>
+	     			<th>ê±°ë˜ ëŒ€ê¸°ì¤‘</th>
 	     		</tr>
 	     	</thead>
 	     	<tbody>
@@ -149,39 +149,39 @@ function GetHistoryList(){
 
 <div id="mybusiness" class="wallet_tabcontent">
 <div class="mywallet_box">
-   <h1>°Å·¡³»¿ª</h1>
-  <h4>´ë±âÁßÀÎ °Å·¡</h4>
+   <h1>ê±°ë˜ë‚´ì—­</h1>
+  <h4>ëŒ€ê¸°ì¤‘ì¸ ê±°ë˜</h4>
      <table class="coinWallet"  id="order_table">
      	<thead>
      		<tr>
-     			<th>ÄÚÀÎ</th>
-     			<th>½Ã°£</th>
-     			<th>Á¾·ù</th>
-     			<th>°¡°İ</th>
-     			<th>ÁÖ¹®¼ö·®/Ã¼°á¼ö·®</th>
-     			<th>»óÅÂ</th>
+     			<th>ì½”ì¸</th>
+     			<th>ì‹œê°„</th>
+     			<th>ì¢…ë¥˜</th>
+     			<th>ê°€ê²©</th>
+     			<th>ì£¼ë¬¸ìˆ˜ëŸ‰/ì²´ê²°ìˆ˜ëŸ‰</th>
+     			<th>ìƒíƒœ</th>
      		</tr>
      		<tr id="order_wait">
-     			<td class="coinWallet_2" colspan="6" colspan="5" style="text-align: center; font-size: 18px;">´ë±âÁÖ¹® ³»¿ªÀÌ ¾ø½À´Ï´Ù.</td>
+     			<td class="coinWallet_2" colspan="6" colspan="5" style="text-align: center; font-size: 18px;">ëŒ€ê¸°ì£¼ë¬¸ ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.</td>
      		</tr>
      	</thead>
      	<tbody>
      	</tbody>
      </table>
 
-  <h4>Ã¤°áµÈ °Å·¡</h4>
+  <h4>ì±„ê²°ëœ ê±°ë˜</h4>
       <table class="coinWallet"  id="history_table">
       	<thead>
      		<tr>
-     			<th>ÄÚÀÎ</th>
-     			<th>½Ã°£</th>
-     			<th>Á¾·ù</th>
-     			<th>°¡°İ</th>
-     			<th>°Å·¡·®</th>
-     			<th>»óÅÂ</th>
+     			<th>ì½”ì¸</th>
+     			<th>ì‹œê°„</th>
+     			<th>ì¢…ë¥˜</th>
+     			<th>ê°€ê²©</th>
+     			<th>ê±°ë˜ëŸ‰</th>
+     			<th>ìƒíƒœ</th>
      		</tr>
      		<tr id="history_wait">
-     			<td class="coinWallet_2" colspan="6" colspan="5" style="text-align: center; font-size: 18px;">°Å·¡³»¿ªÀÌ ¾ø½À´Ï´Ù.</td>
+     			<td class="coinWallet_2" colspan="6" colspan="5" style="text-align: center; font-size: 18px;">ê±°ë˜ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.</td>
      		</tr>
      	</thead>
      	<tbody>
@@ -193,18 +193,18 @@ function GetHistoryList(){
 
 <div id="myreturn" class="wallet_tabcontent">
 <div class="mywallet_box">
-   <h1>¼öÀÍ·ü</h1>
-  <h4>ÀÚ±İ ¹× ÇöÀç ÀÚ»ê</h4>
-  <p>KRW¸¦ ±â¹İÀ¸·Î °è»êµË´Ï´Ù.</p>
+   <h1>ìˆ˜ìµë¥ </h1>
+  <h4>ìê¸ˆ ë° í˜„ì¬ ìì‚°</h4>
+  <p>KRWë¥¼ ê¸°ë°˜ìœ¼ë¡œ ê³„ì‚°ë©ë‹ˆë‹¤.</p>
   
   	<div class="profit waller_box1">
-  		<div class="profit1">ÃÊ±âÀÚ±İ</div><div class="profit2">30,000,000¿ø</div>
+  		<div class="profit1">ì´ˆê¸°ìê¸ˆ</div><div class="profit2">30,000,000ì›</div>
   	</div>	
   	<div class="profit waller_box1">	
-  		<div class="profit1">ÇöÀçÀÚ»ê</div><div class="profit2" id="tot"></div>
+  		<div class="profit1">í˜„ì¬ìì‚°</div><div class="profit2" id="tot"></div>
   	</div>	
   	<div class="profit waller_box2">	
-  		<div class="profit1">°¡ÀÔÈÄ ¼öÀÍ·ü</div><div class="profit3" id="profit"></div>
+  		<div class="profit1">ê°€ì…í›„ ìˆ˜ìµë¥ </div><div class="profit3" id="profit"></div>
   	</div>
 
 </div>  
