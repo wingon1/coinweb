@@ -114,7 +114,7 @@ jQuery(document).ready(function(){
 				jQuery("#cpass").focus();
 				return false;
 		}else if(jQuery("#agree").is(":checked") == false){
-			alert("이용약관 및 개인정보 동의를 체크하세요.");
+			alert("체크박스를 읽고 체크 하세요.");
 			jQuery("#agree").focus();
 			return false;
 		}
@@ -654,7 +654,8 @@ jQuery(document).ready(function(){
 						<p class="cd-signin-modal__fieldset">
 							<input type="checkbox" id="agree" name="agree"
 								class="cd-signin-modal__input "> <label
-								for="accept-terms">이용약관 및 개인정보 동의</a></label>
+								for="accept-terms">보안이 안되어있기 때문에 개인정보를 입력하지 말고 가짜로 입력하세요.</label>
+						</p>
 						</p>
 
 						<p class="cd-signin-modal__fieldset">

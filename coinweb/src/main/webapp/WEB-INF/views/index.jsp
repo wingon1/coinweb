@@ -17,11 +17,10 @@ function bithumb (){
 			var bithumb_now = bithumb_array[key];
 			var opening_price = data['data'][bithumb_now]['opening_price'];
 			var closing_price = data['data'][bithumb_now]['closing_price'];
-			console.log(bithumb_now);
 			var bithumb_krw = parseInt(closing_price);
 			var cpYesterday = closing_price - opening_price
 			var percent = (cpYesterday / opening_price) * 100.0;
-			$('#'+bithumb_now).html(bithumb_krw+'KRW');
+			$('#'+bithumb_now).html(bithumb_krw.toLocaleString()+'KRW');
 			if(percent > 0)
 				$('#p_'+bithumb_now).html('('+percent.toFixed(2)+'%)').css("color","#43A047");
 			else if(percent<0)
