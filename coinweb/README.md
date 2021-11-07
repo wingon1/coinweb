@@ -1,18 +1,6 @@
 # coinweb
 
-톰캣버전 apache-tomcat-8.0.36
-wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.36/bin/apache-tomcat-8.0.36.tar.gz
 
-서버
-aws
-zzickgwan@naver.com / jidudu1!
-ssh hansol@54.180.29.138 / gksthf1215
-ec2-user는 pem 있어야하는데 분실한듯함
-
-DB
-54.180.29.138
-hansol / 1215
-root / hansol1215
 
 CREATE TABLE `bbs` (
   `bbsID` int(11) NOT NULL AUTO_INCREMENT,
@@ -123,8 +111,3 @@ CREATE TABLE `wallet` (
 
 
 
-서버 배포방법
-1. war로 파일 빌드
-2. scp -p22 ./target/coinweb-1.0.0-BUILD-SNAPSHOT.war hansol@54.180.29.138:/home/hansol/apache-tomcat-8.0.36/webapps/
-3. 서버로 들어가.. 8080종료 후 톰캣재시작 /apache-tomcat-8.0.36/bin/startup.sh
-ㄹㄹㄹㄹㄹㄹfff
