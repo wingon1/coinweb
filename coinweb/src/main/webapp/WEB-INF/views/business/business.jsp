@@ -28,6 +28,7 @@ var sid = '<c:out value="${sid}"/>';
 
 //초기 화면띄우기
 $(function() {
+	GetChart();
 	GetCoinData();
 	GetHoga();
 	GetTransactions();
@@ -46,6 +47,7 @@ $(function() {
 		$('#sell_unit').val("");
 		GetCoinData();
 		GetHoga();
+		GetChart();
 		GetTransactions();
 		GetMyData();
 		GetOrderList();
