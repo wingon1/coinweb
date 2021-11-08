@@ -124,5 +124,5 @@ CREATE TABLE `wallet` (
 서버 배포방법
 1. war로 파일 빌드
 2. scp -p22 ./target/coinweb-1.0.0-BUILD-SNAPSHOT.war hansol@54.180.29.138:/home/hansol/apache-tomcat-8.0.36/webapps/
-3. 서버로 들어가.. 8080종료 후 톰캣재시작 /apache-tomcat-8.0.36/bin/startup.sh
+3. 서버로 들어가.. 8080종료 후 톰캣재시작 apache-tomcat-8.0.36/bin/startup.sh
 ㄹㄹㄹㄹㄹㄹfff

@@ -28,8 +28,9 @@ var sid = '<c:out value="${sid}"/>';
 
 //초기 화면띄우기
 $(function() {
-	fSetHogaBg();
-	GetChart();
+	GetCoinData();
+	GetHoga();
+	GetTransactions();
 	GetMyData();
 	GetOrderList();
 	GetHistoryList();
@@ -45,7 +46,7 @@ $(function() {
 		$('#sell_unit').val("");
 		GetCoinData();
 		GetHoga();
-		GetChart();
+		GetTransactions();
 		GetMyData();
 		GetOrderList();
 		GetHistoryList();
@@ -198,7 +199,9 @@ function Floor(n, pos) {
 
 var now_price = 0;
  function GetCoinData(){
-	$.get('https://api.bithumb.com/public/ticker/'+coin, function(data) {
+	 $.get('proxy.do',{
+		 csurl:'https://api.bithumb.com/public/ticker/'+coin+'_KRW',
+	 }, function (data) {
 		console.log(data)
 		var opening_price = data['data']['opening_price'];
 		var closing_price = data['data']['closing_price'];
@@ -208,9 +211,7 @@ var now_price = 0;
 		now_price = data['data']['closing_price'];
 		$('.max_price').html(numberWithCommas(data['data']['max_price']));
 		$('.min_price').html(numberWithCommas(data['data']['min_price']));
-		$('.buy_price').html(numberWithCommas(data['data']['buy_price']));
-		$('.sell_price').html(numberWithCommas(data['data']['closing_price']));
-		$('.volume').html(numberWithCommas(parseInt(data['data']['volume_1day']))+coin);
+		$('.volume').html(numberWithCommas(parseInt(data['data']['units_traded_24H']))+coin);
 		$('.now_price').html(numberWithCommas(data['data']['closing_price']));
 		$('.opening_price').html(numberWithCommas(opening_price));
 		if(percent > 0){
@@ -236,19 +237,22 @@ function GetHoga(){
 	}, function (data) {
 		asks = data['data']['asks'];
 		bids = data['data']['bids'];
+		$('.buy_price').html(numberWithCommas(data['data']['bids'][0]['price']));
+		$('.sell_price').html(numberWithCommas(data['data']['asks'][0]['price']));
 		for(i=0;i<10;i++){
-			$('#ask_quantity'+i).html(data['data']['asks'][i]['quantity']);
+			$('#ask_quantity'+i).html(data['data']['asks'][i]['quantity'].substr(0,12));
 			$('#ask_price'+i).html(numberWithCommas(data['data']['asks'][i]['price']));
-			$('#bid_quantity'+i).html(data['data']['bids'][i]['quantity']);
+			$('#bid_quantity'+i).html(data['data']['bids'][i]['quantity'].substr(0,12));
 			$('#bid_price'+i).html(numberWithCommas(data['data']['bids'][i]['price']));
 		}
 		fSetHogaBg();
-		setTimeout(	"fResetHogaBg()", 10000);
 	});
 }
 //거래내역
 function GetTransactions(){
-	$.get('https://api.bithumb.com/public/transaction_history/'+coin, function(data) {
+	$.get('proxy.do',{
+		csurl:'https://api.bithumb.com/public/transaction_history/'+coin+'_KRW',
+	}, function (data) {
 		for(var i=0;i<10;i++){$('#trans_price'+i).html(numberWithCommas(data['data'][i]['price']));}
 		for(var i=0;i<10;i++){$('#trans_total'+i).html(data['data'][i]['units_traded']);}
 	});
@@ -264,7 +268,8 @@ function fShowData() {
 		GetHistoryList();
 	} catch(e){			
     } finally {
-        setTimeout("fShowData()", 3000);
+        setTimeout("fShowData()", 2000);
+		setTimeout(	"fResetHogaBg()", 2000);
     }
 }
 function setLastPrice() {
@@ -703,11 +708,11 @@ $(function(){
 	 										</td>
 	 									</tr>
 	 									<tr> 
-	 										<td>고가</td>
+	 										<td>최고가</td>
 	 										<td class=max_price></td>
 	 									</tr>
 	 									<tr> 
-	 										<td>저가</td>
+	 										<td>최저가</td>
 	 										<td class=min_price></td>
 	 									</tr>
 	 									<tr> 
